@@ -132,17 +132,50 @@
 
   .svc{ list-style:none; margin:0; padding:0; }
   .svc li{
-    display:grid; grid-template-columns:58px 1fr; gap:14px;
-    padding:14px 0; border-top:1px solid var(--line-soft);
+    display:grid; grid-template-columns:46px 1fr; gap:15px;
+    padding:16px 0; border-top:1px solid var(--line-soft);
   }
-  .svc li:first-child{ border-top:0; padding-top:0; }
+  .svc li:first-child{ border-top:0; padding-top:2px; }
+  .svcicon{
+    width:46px; height:46px; border-radius:13px; display:grid; place-items:center;
+    background:var(--teal-bg); color:var(--petrol);
+    border:1px solid var(--line-soft);
+  }
+  .svcicon svg{ width:23px; height:23px; }
   .code{
-    font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10.5px; font-weight:600;
-    letter-spacing:.06em; color:var(--petrol); background:var(--teal-bg);
-    border-radius:4px; padding:4px 0; text-align:center; height:fit-content;
+    display:inline-block; margin-bottom:3px;
+    font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; font-weight:600;
+    letter-spacing:.14em; color:var(--teal);
   }
-  .svc h3{ margin:0 0 3px; font-size:15px; font-weight:600; color:var(--ink); letter-spacing:-.01em; }
+  .svc h3{ margin:0 0 4px; font-size:15.5px; font-weight:600; color:var(--ink); letter-spacing:-.015em; }
   .svc p{ margin:0; font-size:13.5px; color:var(--ink-2); line-height:1.5; }
+
+  /* ---------- BLOQUE DE PROCESO ---------- */
+  .proc{
+    background:linear-gradient(168deg,#14606F 0%,#0D3F4B 58%,#0A3039 100%);
+    border-bottom:0;
+  }
+  .proc .eyebrow{ color:#84B2BD; }
+  .proc .eyebrow::after{ background:rgba(255,255,255,.2); }
+  .flow{ list-style:none; margin:0; padding:0; }
+  .flow li{ position:relative; display:grid; grid-template-columns:34px 1fr; gap:15px; padding-bottom:20px; }
+  .flow li:last-child{ padding-bottom:4px; }
+  .flow li:not(:last-child)::before{
+    content:""; position:absolute; left:17px; top:38px; bottom:2px;
+    width:1px; background:rgba(255,255,255,.22);
+  }
+  .fnum{
+    width:34px; height:34px; border-radius:50%; display:grid; place-items:center;
+    background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.28);
+    font-family:"IBM Plex Mono", monospace; font-size:12px; font-weight:600; color:#7FE3EF;
+  }
+  .flow h4{ margin:0 0 3px; font-size:14.5px; font-weight:600; color:#fff; letter-spacing:-.01em; padding-top:7px; }
+  .flow p{ margin:0; font-size:13px; color:#A9CBD3; line-height:1.5; }
+  .procnote{
+    margin:16px 0 0; padding-top:15px; border-top:1px solid rgba(255,255,255,.15);
+    font-size:12.5px; color:#A9CBD3; line-height:1.55;
+  }
+  .procnote b{ color:#7FE3EF; font-weight:600; }
 
   .row{
     display:grid; grid-template-columns:88px 1fr; gap:14px; align-items:baseline;
@@ -159,23 +192,27 @@
   .row dd a:focus-visible{ outline:2px solid var(--teal); outline-offset:2px; }
 
   /* ---------- QR ---------- */
-  .tabs{ display:flex; gap:6px; margin-bottom:16px; }
-  .tab{
-    flex:1; padding:9px 8px; font:inherit; font-size:12.5px; font-weight:600;
-    border:1px solid var(--line); background:var(--surface); color:var(--ink-2);
-    border-radius:8px; cursor:pointer;
-    transition:border-color .14s ease, background .14s ease, color .14s ease;
+  .savebtn{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    width:100%; padding:15px 14px; border-radius:10px; text-decoration:none;
+    background:#0F5F6D; border:1px solid #0F5F6D; color:#fff;
+    font-size:15px; font-weight:600; letter-spacing:-.005em;
+    transition:transform .14s ease, box-shadow .14s ease;
   }
-  .tab:hover{ border-color:var(--teal); }
-  .tab:focus-visible{ outline:2px solid var(--teal); outline-offset:2px; }
-  .tab.is-on{ background:var(--petrol); border-color:var(--petrol); color:var(--surface); }
-  .panel[hidden]{ display:none !important; }
-  .qrbox{
-    background:#fff; border:1px solid var(--line); border-radius:12px;
-    padding:16px; display:flex; align-items:center; justify-content:center; min-height:196px;
+  .savebtn svg{ width:20px; height:20px; flex:0 0 auto; }
+  .savebtn:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(15,95,109,.3); }
+  .savebtn:focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
+  .btnstack{ display:flex; flex-direction:column; gap:10px; }
+  .sharebtn{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    width:100%; padding:15px 14px; border-radius:10px; cursor:pointer;
+    background:var(--surface); border:1px solid var(--line); color:var(--ink);
+    font:inherit; font-size:15px; font-weight:600; letter-spacing:-.005em;
+    transition:border-color .14s ease, color .14s ease, transform .14s ease;
   }
-  .qrbox canvas, .qrbox img{ display:block; width:164px !important; height:164px !important; }
-  .qrhint{ margin:10px 0 0; font-size:12.5px; color:var(--ink-3); text-align:center; }
+  .sharebtn svg{ width:20px; height:20px; flex:0 0 auto; }
+  .sharebtn:hover{ border-color:var(--teal); color:var(--teal); transform:translateY(-1px); }
+  .sharebtn:focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
   .copy{
     margin-top:10px; width:100%; padding:11px; font:inherit; font-size:13px; font-weight:600;
     border:1px solid var(--line); background:var(--surface-2); color:var(--ink);
@@ -262,34 +299,73 @@
       <p class="eyebrow">Servicios</p>
       <ul class="svc">
         <li>
-          <div class="code">OI / UF</div>
+          <div class="svcicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s-6 6.4-6 9.9a6 6 0 0 0 12 0C18 9.4 12 3 12 3Z"/><path d="M6.6 12.4h10.8M7.6 15.8h8.8"/></svg></div>
           <div>
+            <span class="code">OI / UF</span>
             <h3>Ósmosis inversa y ultrafiltración</h3>
             <p>Diseño y fabricación de sistemas de ósmosis inversa y ultrafiltración.</p>
           </div>
         </li>
         <li>
-          <div class="code">MTTO</div>
+          <div class="svcicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.1"/><path d="M12 2.2v2.6M12 19.2v2.6M2.2 12h2.6M19.2 12h2.6M5.1 5.1l1.9 1.9M17 17l1.9 1.9M18.9 5.1 17 7M7 17l-1.9 1.9"/></svg></div>
           <div>
+            <span class="code">MTTO</span>
             <h3>Mantenimiento de plantas</h3>
             <p>Mantenimiento de plantas de tratamiento de aguas.</p>
           </div>
         </li>
         <li>
-          <div class="code">SUM</div>
+          <div class="svcicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 7.7l9 4.7 9-4.7L12 3Z"/><path d="m3 12.4 9 4.7 9-4.7"/><path d="m3 16.9 9 4.7 9-4.7"/></svg></div>
           <div>
+            <span class="code">SUM</span>
             <h3>Suministro de insumos</h3>
             <p>Membranas de ósmosis inversa y ultrafiltración, medios filtrantes selectivos y resinas de intercambio iónico.</p>
           </div>
         </li>
         <li>
-          <div class="code">AMB</div>
+          <div class="svcicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.2 20.4A7.2 7.2 0 0 1 4 13.2C4 7 11.2 4 20.4 4c0 9.2-3.1 16.4-9.2 16.4Z"/><path d="M4 20.4c2.1-4.1 5.2-6.2 9.2-7.2"/></svg></div>
           <div>
+            <span class="code">AMB</span>
             <h3>Gestión ambiental</h3>
             <p>Gestión ambiental y tratamiento de aguas residuales.</p>
           </div>
         </li>
       </ul>
+    </section>
+
+    <section class="sec proc">
+      <p class="eyebrow">Cómo funciona</p>
+      <ol class="flow">
+        <li>
+          <span class="fnum">1</span>
+          <div>
+            <h4>Agua cruda</h4>
+            <p>Entra con dureza, sólidos, hierro o carga orgánica según la fuente.</p>
+          </div>
+        </li>
+        <li>
+          <span class="fnum">2</span>
+          <div>
+            <h4>Pretratamiento</h4>
+            <p>Medios filtrantes selectivos y resinas de intercambio iónico preparan el agua y protegen la membrana.</p>
+          </div>
+        </li>
+        <li>
+          <span class="fnum">3</span>
+          <div>
+            <h4>Membrana</h4>
+            <p>Ósmosis inversa o ultrafiltración separan sales, partículas y microorganismos.</p>
+          </div>
+        </li>
+        <li>
+          <span class="fnum">4</span>
+          <div>
+            <h4>Agua tratada</h4>
+            <p>Con la calidad que exige cada proceso productivo.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="procnote">El rechazo y los lodos que salen del sistema se manejan con <b>gestión ambiental</b>, y el conjunto se sostiene en el tiempo con <b>mantenimiento programado</b>.</p>
     </section>
 
     <section class="sec">
@@ -303,20 +379,17 @@
 
     <section class="sec">
       <p class="eyebrow">Guardar y compartir</p>
-      <div class="tabs" role="group" aria-label="Tipo de código QR">
-        <button class="tab is-on" id="tabV" type="button" aria-pressed="true">Guardar contacto</button>
-        <button class="tab" id="tabS" type="button" aria-pressed="false">Compartir tarjeta</button>
+      <div class="btnstack">
+        <a class="savebtn" href="contacto.vcf" download="Luis Miguel Valencia - FTA.vcf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+          Guardar contacto en el celular
+        </a>
+        <button class="sharebtn" id="shareBtn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v14"/></svg>
+          Compartir tarjeta
+        </button>
       </div>
-      <div class="panel" id="panelV">
-        <div class="qrbox" id="qrVcard"></div>
-        <p class="qrhint">Escanea con la cámara del celular para guardar el contacto.</p>
-        <button class="copy" id="copyData" type="button">Copiar datos de contacto</button>
-      </div>
-      <div class="panel" id="panelS" hidden>
-        <div class="qrbox" id="qrShare"></div>
-        <p class="qrhint">Escanea para abrir esta tarjeta en otro celular.</p>
-        <button class="copy" id="copyLink" type="button">Copiar enlace</button>
-      </div>
+      <button class="copy" id="copyData" type="button">Copiar datos de contacto</button>
     </section>
 
   </div>
@@ -328,7 +401,6 @@
   <span>Escríbenos</span>
 </a>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 (function(){
   "use strict";
@@ -407,20 +479,6 @@
   var SHARE_URL = "https://asesorenaguas.github.io";
   var shareUrl = (SHARE_URL.indexOf('http') === 0) ? SHARE_URL : window.location.href;
 
-  var VCARD = [
-    'BEGIN:VCARD',
-    'VERSION:3.0',
-    'N:Valencia Arango;Luis Miguel;;;',
-    'FN:Luis Miguel Valencia Arango',
-    'ORG:FTA - Filtracion y Tratamiento de Agua y Lodos',
-    'TITLE:Director',
-    'TEL;TYPE=CELL:+573152575064',
-    'EMAIL:asesorenaguas@gmail.com',
-    'ADR;TYPE=WORK:;;;Medellin;;;Colombia',
-    'URL:' + shareUrl,
-    'END:VCARD'
-  ].join('\n');
-
   var PLAIN = [
     'FTA - Filtracion y Tratamiento de Agua y Lodos',
     'Luis Miguel Valencia Arango - Director',
@@ -430,36 +488,30 @@
     shareUrl
   ].join('\n');
 
-  /* ---------- QR ---------- */
-  function qr(id, text, level){
-    var el = document.getElementById(id);
-    if (!el) return;
-    if (typeof window.QRCode === 'undefined') {
-      el.innerHTML = '<p style="font:13px/1.5 system-ui;color:#6F8990;margin:0;text-align:center">' +
-                     'No se pudo cargar el código QR. Usa los botones de contacto.</p>';
-      return;
-    }
-    el.innerHTML = '';
-    new window.QRCode(el, {
-      text: text, width: 164, height: 164,
-      colorDark: '#0E262C', colorLight: '#ffffff',
-      correctLevel: window.QRCode.CorrectLevel[level]
+  /* ---------- compartir con el menú nativo del celular ---------- */
+  var shareBtn = document.getElementById('shareBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', function(){
+      var label = shareBtn.querySelector('svg') ? null : shareBtn.textContent;
+      var data = {
+        title: 'FTA — Filtración y Tratamiento de Agua y Lodos',
+        text: 'Luis Miguel Valencia Arango, Director. Ósmosis inversa, ultrafiltración, mantenimiento de plantas y gestión ambiental.',
+        url: shareUrl
+      };
+      if (navigator.share) {
+        navigator.share(data).catch(function(){ /* el usuario canceló */ });
+      } else if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(function(){
+          var node = shareBtn.lastChild;
+          var prev = node.textContent;
+          node.textContent = ' Enlace copiado';
+          setTimeout(function(){ node.textContent = prev; }, 1800);
+        });
+      } else {
+        window.prompt('Copia el enlace:', shareUrl);
+      }
     });
   }
-  qr('qrVcard', VCARD, 'L');
-
-  /* ---------- pestañas ---------- */
-  var tabV = document.getElementById('tabV'), tabS = document.getElementById('tabS');
-  var panelV = document.getElementById('panelV'), panelS = document.getElementById('panelS');
-  var shareDrawn = false;
-  function show(v){
-    tabV.classList.toggle('is-on', v); tabS.classList.toggle('is-on', !v);
-    tabV.setAttribute('aria-pressed', String(v)); tabS.setAttribute('aria-pressed', String(!v));
-    panelV.hidden = !v; panelS.hidden = v;
-    if (!v && !shareDrawn) { qr('qrShare', shareUrl, 'M'); shareDrawn = true; }
-  }
-  tabV.addEventListener('click', function(){ show(true); });
-  tabS.addEventListener('click', function(){ show(false); });
 
   /* ---------- copiar ---------- */
   function copy(btn, text, done){

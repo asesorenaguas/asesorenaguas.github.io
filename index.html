@@ -150,25 +150,30 @@
   .svc h3{ margin:0 0 4px; font-size:15.5px; font-weight:600; color:var(--ink); letter-spacing:-.015em; }
   .svc p{ margin:0; font-size:13.5px; color:var(--ink-2); line-height:1.5; }
 
-  /* ---------- LÍNEA HOGAR ---------- */
-  .home{ background:var(--surface-2); }
-  .homeintro{ margin:-4px 0 16px; font-size:13.5px; color:var(--ink-2); line-height:1.5; }
+  /* ---------- LÍNEA HOGAR (bloque de marca: fija sus propios colores) ---------- */
+  .home{
+    background:linear-gradient(168deg,#14606F 0%,#0D3F4B 58%,#0A3039 100%);
+    border-bottom:0;
+  }
+  .home .eyebrow{ color:#84B2BD; }
+  .home .eyebrow::after{ background:rgba(255,255,255,.2); }
+  .homeintro{ margin:-4px 0 16px; font-size:13.5px; color:#A9CBD3; line-height:1.5; }
   .hgrid{ display:grid; gap:10px; grid-template-columns:1fr; }
   @media (min-width:440px){ .hgrid{ grid-template-columns:1fr 1fr; } }
   .hcard{
-    background:var(--surface); border:1px solid var(--line);
+    background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.17);
     border-radius:12px; padding:15px 15px 16px;
   }
-  .hcard svg{ width:22px; height:22px; display:block; color:var(--green); margin-bottom:9px; }
-  .hcard strong{ display:block; font-size:14px; font-weight:600; letter-spacing:-.012em; margin-bottom:3px; }
-  .hcard span{ display:block; font-size:12.5px; color:var(--ink-2); line-height:1.45; }
+  .hcard svg{ width:22px; height:22px; display:block; color:#8FD86A; margin-bottom:9px; }
+  .hcard strong{ display:block; font-size:14px; font-weight:600; letter-spacing:-.012em; margin-bottom:3px; color:#fff; }
+  .hcard span{ display:block; font-size:12.5px; color:#A9CBD3; line-height:1.45; }
   .homecta{
-    display:inline-flex; align-items:center; gap:7px; margin-top:16px;
-    font-size:13.5px; font-weight:600; color:var(--petrol); text-decoration:none;
-    border-bottom:1px solid var(--line); padding-bottom:2px;
+    display:inline-flex; align-items:center; gap:7px; margin-top:18px;
+    font-size:13.5px; font-weight:600; color:#7FE3EF; text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.3); padding-bottom:2px;
   }
-  .homecta:hover{ color:var(--teal); border-color:var(--teal); }
-  .homecta:focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
+  .homecta:hover{ color:#fff; border-color:#fff; }
+  .homecta:focus-visible{ outline:2px solid #7FE3EF; outline-offset:3px; }
   .homecta svg{ width:16px; height:16px; }
 
   .row{
